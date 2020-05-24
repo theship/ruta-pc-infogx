@@ -1,5 +1,5 @@
 var todayFunded = 20000,
-    todayWritten = 15000;
+    todayWritten = 20000;
 
 // These values could be pulled & parsed from li in html,
 // but keeping it quick, here.    
@@ -49,4 +49,6 @@ function numsToday() {
 
 window.addEventListener("orientationchange", function() {
   console.log(screen.orientation);
+  location.reload(true);
 }, false);
+

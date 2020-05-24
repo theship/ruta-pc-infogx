@@ -18,12 +18,7 @@ function numsToday() {
   let fundsHeight = (todayFunded / goalFund) * longFund.clientHeight;
 
   let lettersFunded = document.createElement("div"); 
-  lettersFunded.setAttribute("class", "lettersFunded");
-
-  lettersFunded.style.height          = fundsHeight;
-  lettersFunded.style.width           = fundsWidth;
-                   
-  lettersFunded.textContent = "<------ FUNDED to date";
+  setFunded();
 
   fundsList.appendChild(lettersFunded);
 
@@ -31,24 +26,30 @@ function numsToday() {
   const writtenList = document.querySelector('#written-x');
   const longWritten = document.querySelector("#written-x > li:nth-child(7)");
 
-  // 
   let writtenWidth = longWritten.clientWidth;
   let writtenHeight = (todayWritten / goalWritten) * longWritten.clientHeight;
 
   let lettersWritten = document.createElement("div"); 
-  lettersWritten.setAttribute("class", "lettersWritten");
-
-  lettersWritten.style.height          = writtenHeight;
-  lettersWritten.style.width           = writtenWidth;
-                   
-  lettersWritten.textContent = "<------ WRITTEN to date";
+  setWritten();
 
   writtenList.appendChild(lettersWritten);
 
+  function setWritten() {
+    lettersWritten.setAttribute("class", "lettersWritten");
+    lettersWritten.style.height = writtenHeight;
+    lettersWritten.style.width = writtenWidth;
+    lettersWritten.textContent = "<------ WRITTEN to date";
+  }
+
+  function setFunded() {
+    lettersFunded.setAttribute("class", "lettersFunded");
+    lettersFunded.style.height = fundsHeight;
+    lettersFunded.style.width = fundsWidth;
+    lettersFunded.textContent = "<------ FUNDED to date";
+  }
 }
 
 window.addEventListener("orientationchange", function() {
   console.log(screen.orientation);
   location.reload(true);
 }, false);
-
